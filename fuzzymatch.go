@@ -32,24 +32,10 @@ func Levenshtein(a, b string) int {
 			if a[i-1] != b[j-1] {
 				cost = 1
 			}
-			d[i][j] = minimum(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]+cost)
+			d[i][j] = min(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]+cost)
 		}
 	}
 	return d[la][lb]
-}
-
-// Helper function to find the minimum of three integers
-func minimum(a, b, c int) int {
-	if a < b {
-		if a < c {
-			return a
-		}
-		return c
-	}
-	if b < c {
-		return b
-	}
-	return c
 }
 
 // SuggestClosestMatch finds the closest string match using Levenshtein distance
